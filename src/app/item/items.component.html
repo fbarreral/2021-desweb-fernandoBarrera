@@ -10,7 +10,7 @@ So you can still use template expressions, bindings, templates as well as all th
 The ActionBar is the NativeScript common abstraction over the Android ActionBar and iOS NavigationBar.
 http://docs.nativescript.org/ui/action-bar
 -->
-<ActionBar title="Mi parcial"> </ActionBar>
+<ActionBar style="background-color: blue;"title="BROWSE"></ActionBar>
 
 <!--
 The GridLayout arranges its child elements in a table structure of rows and columns.
@@ -25,15 +25,25 @@ You can learn more about the NativeScript core theme at https://github.com/nativ
 <GridLayout>
   <ListView [items]="items">
     <ng-template let-item="item">
-      <StackLayout [nsRouterLink]="['/item', item.id, item.sol]">
-        <Label [text]="item.id"></Label>
-        <Label [text]="item.sol"></Label>
-        <Label [text]="item.camera.name"></Label>
-        <Label [text]="item.camera.full_name"></Label>
-        <Label [text]="item.rover.name"></Label>
-        <Label [text]="item.rover.landing_date"></Label>
-        <Label [text]="item.rover.launch_date"></Label>
-        <image dock="right" width=50 height=100 [src]="item.img_src.replace('http', 'https')"></image>
+      <StackLayout [nsRouterLink]="['/item', item.id]">
+        <DockLayout>
+          <StackLayout>
+            <label></label>
+          </StackLayout>
+          <StackLayout>
+              <Label [text]="item.id"></Label>
+              <image dock="left" width=100 height=100 [src]="item.img_src.replace('http', 'https')"></image>
+          </StackLayout>
+          <StackLayout>
+            <Label horizontalAlignment="right" [text]="item.sol"></Label>
+            <StackLayout >
+              <Label [text]="item.camera.full_name"></Label>
+              <Label [text]="item.rover.name"></Label>
+              <Label [text]="item.rover.landing_date"></Label>
+            </StackLayout>
+          </StackLayout>
+        </DockLayout>
+
       </StackLayout>
     </ng-template>
   </ListView>
