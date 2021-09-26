@@ -27,6 +27,13 @@ You can learn more about the NativeScript core theme at https://github.com/nativ
     <ng-template let-item="item">
       <StackLayout [nsRouterLink]="['/item', item.id, item.sol]">
         <Label [text]="item.id"></Label>
+        <Label [text]="item.sol"></Label>
+        <Label [text]="item.camera.name"></Label>
+        <Label [text]="item.camera.full_name"></Label>
+        <Label [text]="item.rover.name"></Label>
+        <Label [text]="item.rover.landing_date"></Label>
+        <Label [text]="item.rover.launch_date"></Label>
+        <image dock="right" width=50 height=100 [src]="item.img_src.replace('http', 'https')"></image>
       </StackLayout>
     </ng-template>
   </ListView>
